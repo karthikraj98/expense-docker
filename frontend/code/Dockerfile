@@ -1,2 +1,2 @@
 FROM nginx
-COPY 
+COPY code /usr/share/nginx/html/index.html
