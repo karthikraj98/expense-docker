@@ -1,25 +1,25 @@
 version: "3"
 networks:
- expense:
+  expense:
 volumes:
-  mysql: #docker will create volume for mysql
+  mysql:  # docker volume create mysql
 services:
-  mysql: 
-   image: karthikraj98/mysql:v1
-   container_name: mysql
-   volumes:
-   - mysql:/var/lib/mysql
+  mysql:
+    image: joindevops/mysql:v1
+    container_name: mysql # --name mysql
+    volumes:
+    - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
   backend:
-   image: karthikraj98/backend:v1
-   container_name: backend
-   command: sh -c "sleep 5 && node /opt/server/index.js"
-   depends_on:
-   - mysql
+    image: joindevops/backend:v1
+    container_name: backend
+    command: sh -c "sleep 5 && node /opt/server/index.js"
+    depends_on:
+    - mysql
   frontend:
-   image: karthikraj98/frontend:v1
-   container_name: frontend
-   ports:
-   - 80:80
-   depends_on:
-   - backend
+    image: joindevops/frontend:v1
+    container_name: frontend
+    ports:
+    - 80:80
+    depends_on:
+    - backend
   
