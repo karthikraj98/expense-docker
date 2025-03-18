@@ -13,13 +13,13 @@ services:
    image: karthikraj98/backend:v1
    container_name: backend
    command: sh -c "sleep 5 && node /opt/server/index.js"
-   depends-on:
+   depends_on:
     -mysql
   frontend:
    image: karthikraj98/frontend:v1
    container_name: frontend
    ports:
    - 80:80
-   depends-on:
+   depends_on:
     -backend
   
