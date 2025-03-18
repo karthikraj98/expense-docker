@@ -7,7 +7,7 @@ services:
   mysql: 
    image: karthikraj98/mysql:v1
    container_name: mysql
-   volume:
+   volumes:
    - mysql:/var/lib/mysql
   backend:
    image: karthikraj98/backend:v1
