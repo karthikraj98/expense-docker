@@ -1,0 +1,25 @@
+version: "3"
+networks:
+ expense:
+volumes:
+  mysql: #docker will create volume for mysql
+services:
+  mysql: 
+    image: karthikraj98/mysql:v1
+    contianer_name: mysql
+    volume:
+    - mysql:/var/lib/mysql
+  backend:
+   image: karthikraj98/backend:v1
+   contianer_name: backend
+   command: sh -c "sleep 5 && node /opt/server/index.js"
+   depends-on:
+    -mysql
+  frontend:
+   mage: karthikraj98/frontend:v1
+   contianer_name: frontend
+   ports:
+   - 80:80
+   depends-on:
+    -backend
+  
