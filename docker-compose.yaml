@@ -5,10 +5,10 @@ volumes:
   mysql: #docker will create volume for mysql
 services:
   mysql: 
-    image: karthikraj98/mysql:v1
-    container_name: mysql
-    volume:
-    - mysql:/var/lib/mysql
+   image: karthikraj98/mysql:v1
+   container_name: mysql
+   volume:
+   - mysql:/var/lib/mysql
   backend:
    image: karthikraj98/backend:v1
    container_name: backend
@@ -16,7 +16,7 @@ services:
    depends-on:
     -mysql
   frontend:
-   mage: karthikraj98/frontend:v1
+   image: karthikraj98/frontend:v1
    container_name: frontend
    ports:
    - 80:80
