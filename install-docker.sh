@@ -11,3 +11,14 @@ systemctl start docker
 systemctl enable docker
 usermod -aG docker ec2-user
 echo -e "$R Logout and Login again $N"
+
+
+# Size Extension Commands
+
+lsblk
+growpart /dev/xvda 4
+lvextend -l +50%FREE /dev/RootVG/rootVol
+lvextend -l +50%FREE /dev/RootVG/varVol
+xfs_growfs /
+xfs_growfs /var
+lsblk
